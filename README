@@ -1,0 +1,14 @@
+A project for transmitting data from x-BIMU over bluetooth to a PC, and visualizing the orientation of the IMU using Seb Madgwick's AHRS algorithm. Written by Timo Rantalainen 2013 - 2014 tjrantal at gmail dot com. Licensed with GPL 3.0 or later (https://www.gnu.org/copyleft/gpl.html)
+
+Depends on Jave Simple Serial Connector. I used pre-built native binaries from Version 2.6 downloaded from http://code.google.com/p/java-simple-serial-connector/ (4.10.2013) (expected to be found from lib, and jarLib folders). The java part is included as source code in src/jssc, look into the README for licensing.
+
+Prepare x-BIMU:
+Use x-BIMU provided software to set the sampling freq for sensors to 9 (=256 Hz), and battery to 1 (=1 Hz). Set others to 0 (=off)
+
+Prepare PC:
+Install ant, add ant to path, and ANT_HOME environment variable to point to ant home (i.e. the folder with bin)
+Install java SDK
+run ant in root folder -> compiles the source and creates a jar file in the build directory
+Insert Bluetooth dongle, wait for the installation to finish
+Turn x-BIMU on, search for a bluetooth device with PC, pair the devices (insert pin = 1234 or something to that effect)
+Fire up MadgwicAHRS.jar with Java (java -jar build/MadwickAHRS.jar), select correct COM port from the drop down (check which one provides a serial port from control panel), connect and start sampling

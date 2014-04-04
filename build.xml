@@ -1,0 +1,40 @@
+<!-- bluetoothTest ANT build system -->
+
+<project name="MadgwickAHRS" default="jar" basedir=".">
+	<description>
+		Ant build system for MadgwickAHRS
+	</description>
+
+	<!-- set global properties for this build -->
+	<property environment="env"/>
+	<property name="JAVA_HOME" location="${env.JAVA_HOME}" />
+	<property name="javasrc" location="src/" />
+	<property name="lib" location="lib" />
+	<property name="jarLib" location="jarLib" />
+	<property name="build" location="build" />
+	<property name="classes" location="build/java" />
+
+	<!-- Java compile -->
+	<target name="javacompile" description="Compile Java source" >
+		<mkdir dir="${classes}"/>
+		<javac source="1.5" srcdir="${javasrc}" destdir="${classes}" nowarn="on">
+		<!--Include external libs here-->
+		<classpath>
+			<fileset dir="${jarLib}">  
+				<include name="**/*.jar" />  
+			</fileset> 
+		</classpath>
+		</javac>
+	</target>
+  
+	<!-- Create Jar -->
+	<target name="jar" depends="javacompile" description="Create Jar file" >
+		<copy todir="${build}/lib">
+			<fileset dir="${lib}"/>
+		</copy>
+			<copy todir="${build}/jarLib">
+			<fileset dir="${jarLib}"/>
+		</copy>
+		<jar jarfile="${build}/MadgwickAHRS.jar" basedir="${classes}" manifest="manifest/manifest.mf"/>
+	</target>
+  </project>

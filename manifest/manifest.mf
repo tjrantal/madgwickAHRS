@@ -1,0 +1,2 @@
+Main-Class: deakin.timo.xBimuSample.RealTimeVisualizeAxes
+Class-Path: . jarLib/gluegen.jar jarLib/gluegen-natives-windows-amd64.jar jarLib/jogl-all.jar jarLib/jogl-all-natives-windows-amd64.jar
